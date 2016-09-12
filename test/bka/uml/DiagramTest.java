@@ -1,3 +1,5 @@
+package bka.uml;
+
 /*
  * Copyright © Bart Kampers
  */
