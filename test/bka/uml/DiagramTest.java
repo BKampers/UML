@@ -5,7 +5,7 @@ package bka.uml;
  */
 
 import bka.graph.*;
-import bka.uml.*;
+
 import java.util.*;
 import org.junit.*;
 import static org.junit.Assert.*;

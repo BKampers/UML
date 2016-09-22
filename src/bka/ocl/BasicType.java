@@ -20,6 +20,7 @@ public class BasicType implements bka.uml.Type {
         public Literal(String string, BasicType type) {
             this.string = string;
             this.type = type;
+            setValue(string);
         }    
         
         public java.lang.Object getValue() {
@@ -31,7 +32,7 @@ public class BasicType implements bka.uml.Type {
             integer = new java.math.BigInteger(string);
             type = BasicType.INTEGER;
         }
-        
+
         public String toString() {
             return string;
         }
@@ -42,6 +43,18 @@ public class BasicType implements bka.uml.Type {
         
         public String getName() {
             return toString();
+        }
+
+        public boolean equals(Object other) {
+            if (other == this) {
+                return true;
+            }
+            else if (! (other instanceof IntegerValue)) {
+                return false;
+            }
+            else {
+                return asInteger().equals(((IntegerValue) other).asInteger());
+            }
         }
         
         private String string;
