@@ -20,12 +20,12 @@ public class Operator implements Typed {
     };
 
     
-    public static Operator create(String typeName, String symbol) throws java.io.IOException {
+    public static Operator create(String typeName, String symbol) {
         if (BasicType.INTEGER.getName().equals(typeName)) {
             return BasicType.INTEGER.getOperator(symbol);
         }
         else {
-            throw new java.io.IOException("Unknown Operator: " + typeName);
+            throw new IllegalArgumentException("Type mismatch: '" + typeName + "' vs 'INTEGER'");
         }
     }
     

@@ -44,18 +44,6 @@ public class BasicType implements bka.uml.Type {
         public String getName() {
             return toString();
         }
-
-        public boolean equals(Object other) {
-            if (other == this) {
-                return true;
-            }
-            else if (! (other instanceof IntegerValue)) {
-                return false;
-            }
-            else {
-                return asInteger().equals(((IntegerValue) other).asInteger());
-            }
-        }
         
         private String string;
         private BasicType type;
@@ -117,11 +105,13 @@ public class BasicType implements bka.uml.Type {
             else if ("-".equals(symbol)) {
                 result.integer = leftInteger.subtract(rightInteger);
             }
+            else {
+                throw new IllegalArgumentException("Operations '" + symbol + "' not supported for INTEGER");
+            }
             return result;
         }
         else {
-            assert false;
-            return null;
+            throw new IllegalArgumentException("No operators for '" + operator.getType() + "' not supported");
         }
     }
     
@@ -132,7 +122,7 @@ public class BasicType implements bka.uml.Type {
                 return operator;
             }
         }
-        return null; // Must not ocur
+        throw new IllegalArgumentException("Unknown operator '" + symbol + "'");
     }
 
 
@@ -164,6 +154,21 @@ public class BasicType implements bka.uml.Type {
         
         public String toString() {
             return integer.toString();
+        }
+
+        public boolean equals(Object other) {
+            if (other == this) {
+                return true;
+            }
+            else if (! (other instanceof IntegerValue)) {
+                return false;
+            }
+            else if (integer != null) {
+                return integer.equals(((IntegerValue) other).integer);
+            }
+            else {
+                return ((IntegerValue) other).integer == null;
+            }
         }
         
         protected java.math.BigInteger integer;
