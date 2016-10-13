@@ -54,6 +54,11 @@ public class Expression {
         return string;
     }
 
+
+    public Typed evaluate() {
+        throw new UnsupportedOperationException();
+    }
+
     
     public String toString() {
         String string = new String();

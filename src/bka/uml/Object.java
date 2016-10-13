@@ -27,14 +27,14 @@ public class Object extends bka.graph.Vertex implements Typed {
     }
 
     
-    public Map<Attribute, Expression> getAttributeValues() {
+    public Map<Attribute, Typed> getAttributeValues() {
         return attributeValues;
     }
 
     
-    public void setAttributeValues(Map<Attribute, Expression> values) {
+    public void setAttributeValues(Map<Attribute, Typed> values) {
         attributeValues.clear();
-        for (Map.Entry<Attribute, Expression> entry : values.entrySet()) {
+        for (Map.Entry<Attribute, Typed> entry : values.entrySet()) {
             if (entry.getValue() != null) {
                 attributeValues.put(entry.getKey(), entry.getValue());
             }
@@ -58,5 +58,5 @@ public class Object extends bka.graph.Vertex implements Typed {
 
     
     private bka.uml.Class type = null;
-    private Map<Attribute, Expression> attributeValues = new HashMap<Attribute, Expression>();
+    private final Map<Attribute, Typed> attributeValues = new HashMap<>();
 }
