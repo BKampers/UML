@@ -87,7 +87,7 @@ public class BasicType implements bka.uml.Type {
     }
     
     
-    public static Value compute(Operator operator, Value left, Value right) {
+    public static Typed compute(Operator operator, Typed left, Typed right) {
         String symbol = operator.getSymbol();
         if (operator.getType() == INTEGER) {
             BigInteger leftInteger = ((NumberValue) left).asInteger();
@@ -131,7 +131,7 @@ public class BasicType implements bka.uml.Type {
     }
     
     
-    private interface NumberValue extends Value {
+    private interface NumberValue extends Typed {
 
         public java.math.BigInteger asInteger();
         

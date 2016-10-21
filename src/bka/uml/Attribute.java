@@ -65,12 +65,12 @@ public class Attribute implements Member {
     }
     
     
-    public Value getInitialValue() {
+    public Typed getInitialValue() {
         return initialValue;
     }
 
     
-    public void setInitialValue(Value value) {
+    public void setInitialValue(Typed value) {
         initialValue = value;
     }
     
@@ -90,6 +90,6 @@ public class Attribute implements Member {
     private Type owner;
     private char visibility;
     private boolean classScoped;
-    private Value initialValue;
+    private Typed initialValue;
     
 }

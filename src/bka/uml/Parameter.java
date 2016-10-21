@@ -5,7 +5,6 @@
 package bka.uml;
 
 import bka.ocl.Typed;
-import bka.ocl.*;
 
 
 public class Parameter implements Typed {
@@ -51,12 +50,12 @@ public class Parameter implements Typed {
     }
     
     
-    public Value getDefaultValue() {
+    public Typed getDefaultValue() {
         return defaultValue;
     }
     
     
-    public void setDefaultValue(Value value) {
+    public void setDefaultValue(Typed value) {
         defaultValue = value;
     }
     
@@ -95,6 +94,6 @@ public class Parameter implements Typed {
     private String name;
     private Type type;
     
-    private Value defaultValue = null;
+    private Typed defaultValue = null;
     
 }
