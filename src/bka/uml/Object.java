@@ -4,44 +4,48 @@
 
 package bka.uml;
 
-
-import bka.ocl.*;
 import java.util.*;
 
 
-public class Object extends bka.graph.Vertex implements Typed {
+public class Object extends bka.graph.Vertex implements bka.ocl.Typed {
 
     
     public Object() {
     }
 
-    
+
+    @Override
     public Type getType() {
         return type;
     }
 
     
     public void setType(Type type) {
-        assert type instanceof bka.uml.Class || type == null;
         this.type = (bka.uml.Class) type;
     }
 
     
-    public Map<Attribute, Typed> getAttributeValues() {
-        return attributeValues;
-    }
-
-    
-    public void setAttributeValues(Map<Attribute, Typed> values) {
-        attributeValues.clear();
-        for (Map.Entry<Attribute, Typed> entry : values.entrySet()) {
-            if (entry.getValue() != null) {
-                attributeValues.put(entry.getKey(), entry.getValue());
-            }
+    public Map<Attribute, Expression> getAttributeValues() {
+        if (attributeValues != null) {
+            return new HashMap(attributeValues);
+        }
+        else {
+            return null;
         }
     }
 
     
+    public void setAttributeValues(Map<Attribute, Expression> values) {
+        if (values != null) {
+            attributeValues = new HashMap(values);
+        }
+        else {
+            attributeValues = null;
+        }
+    }
+
+
+    @Override
     public String toString() {
         String string = ":";
         if (name != null) {
@@ -57,6 +61,6 @@ public class Object extends bka.graph.Vertex implements Typed {
     }
 
     
-    private bka.uml.Class type = null;
-    private final Map<Attribute, Typed> attributeValues = new HashMap<>();
+    private bka.uml.Class type;
+    private Map<Attribute, Expression> attributeValues;
 }

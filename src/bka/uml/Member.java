@@ -9,14 +9,27 @@ import bka.ocl.Typed;
 
 public interface Member extends Typed {
 
-    public static final char UNDEFINED_VISIBILITY = ' ';
-    public static final char PRIVATE              = '-';
-    public static final char PROTECTED            = '#';
-    public static final char PUBLIC               = '+';
     
-    public String getName();
+    public enum Visibility {
+
+        PUBLIC('+'),
+        PROTECTED('#'),
+        PRIVATE('-');
+
+        Visibility(char symbol) {
+            this.symbol = symbol;
+        }
+
+        public char getSymbol()  {
+            return symbol;
+        }
+
+        private final char symbol;
+    }
+
+
     public Type getOwner();
-    public char getVisibility();
+    public Visibility getVisibility();
     public boolean isClassScoped();
     
 }

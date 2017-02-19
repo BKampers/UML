@@ -33,20 +33,8 @@ public class State extends bka.graph.Vertex {
     }
     
     
-    public State getContainingState() {
-        return containingState;
-    }
-    
-    
-    public void setContainingState(State state) {
-        containingState = state;
-    }
-    
-    
-    private Action entryAction = null;
-    private Activity activity = null;
-    private Action exitAction = null;
-    
-    private State containingState = null;
-    
+    private Action entryAction;
+    private Activity activity;
+    private Action exitAction;
+     
 }

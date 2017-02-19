@@ -13,7 +13,8 @@ public class Operation implements Member {
     public Operation() {
     }
     
-    
+
+    @Override
     public Type getOwner() {
         return owner;
     }
@@ -23,17 +24,19 @@ public class Operation implements Member {
         this.owner = owner;
     }
     
-    
-    public char getVisibility() {
+
+    @Override
+    public Visibility getVisibility() {
         return visibility;
     }
     
     
-    public void setVisibility(char visibility) {
+    public void setVisibility(Visibility visibility) {
         this.visibility = visibility;
     }
     
-    
+
+    @Override
     public boolean isClassScoped() {
         return classScoped;
     }
@@ -53,7 +56,8 @@ public class Operation implements Member {
         this.abstr = abstr;
     } 
     
-    
+
+    @Override
     public String getName() {
         return name;
     }
@@ -65,15 +69,16 @@ public class Operation implements Member {
     
     
     public List<Parameter> getParameters() {
-        return parameters;
+        return (parameters != null) ? new ArrayList(parameters) : null;
     }
     
     
     public void setParameters (List<Parameter> parameters) {
-        this.parameters = parameters;
+        this.parameters = (parameters != null) ? new ArrayList(parameters) : null;
     }
     
-    
+
+    @Override
     public Type getType() {
         return type;
     }
@@ -81,21 +86,6 @@ public class Operation implements Member {
     
     public void setType(Type type) {
         this.type = type;
-    }
-    
-    
-    public ArrayList<Stereotype> getStereotypes() {
-        synchronized (stereotypes) {
-            return stereotypes;
-        }        
-    }
-    
-    
-    public void setStereotypes(ArrayList<Stereotype> list) {
-        synchronized (stereotypes) {
-            stereotypes.clear();
-            stereotypes.addAll(list);
-        }        
     }
     
     
@@ -111,48 +101,57 @@ public class Operation implements Member {
             return stereotypes.remove(stereotype);
         }
     }
+
+
+    public Set<Stereotype> getStereotypes() {
+        return new HashSet<>(stereotypes);
+    }
     
     
     public String parameterString() {
-        String string = "(";
-        Iterator p = parameters.iterator();
-        while (p.hasNext()) {
-            string += p.next();
-            if (p.hasNext()) {
-                string += ", ";
+        StringBuilder builder = new StringBuilder("(");
+        if (parameters != null) {
+            boolean first = true;
+            for (Parameter p : parameters) {
+                if (! first) {
+                    builder.append(", ");
+                }
+                builder.append(p.toString());
+                first = false;
             }
         }
-        string += ")";
-        return string;
+        builder.append(")");
+        return builder.toString();
     }
     
     
     public String signature() {
-        String string = "";
+        StringBuilder builder = new StringBuilder();
         if (name != null) {
-            string += name;
+            builder.append(name);
         }
-        string += parameterString();
+        builder.append(parameterString());
         if (type != null) {
-            string +=  " : " + type;
+            builder.append(" : ");
+            builder.append(type);
         }
-        return string;
+        return builder.toString();
     }
     
-    
+
+    @Override
     public String toString() {
         return owner + "::" + signature();
     }
     
     
-    private Type owner = null;
-    private char visibility = Member.UNDEFINED_VISIBILITY;
-    private boolean classScoped = false;
-    private boolean abstr = false;
-    private String name = null;
-    private List<Parameter> parameters = new ArrayList<Parameter>();
-    private Type type = null;
-    
-    private final ArrayList<Stereotype> stereotypes = new ArrayList<Stereotype>();
+    private Type owner;
+    private Visibility visibility;
+    private boolean classScoped;
+    private boolean abstr;
+    private String name;
+    private List<Parameter> parameters;
+    private Type type;
+    private final Set<Stereotype> stereotypes = new HashSet<>();
     
 }

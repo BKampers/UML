@@ -22,8 +22,21 @@ public class Diagram extends Graph {
     }
 
 
+    public Diagram getStateDiagram(Vertex container) {
+        Collection<Vertex> vertices = new ArrayList<>();
+        Collection<Edge> edges = new ArrayList<>();
+        for (Vertex vertex : getVertices()) {
+            if (isStateDiagramVertex(vertex) && findContainer(vertex) == container) {
+                vertices.add(vertex);
+                edges.addAll(allDirectedEdgesFrom(vertex));
+            }
+        }
+        return new Diagram(vertices, edges);
+    }
+
+
     public Collection<Edge> allEdges(java.lang.Class cls) {
-        Collection<Edge> all = new Vector<Edge>();
+        Collection<Edge> all = new ArrayList<>();
         for (Edge edge : getEdges()) {
             if (edge.getClass() == cls) {
                 all.add(edge);
@@ -34,7 +47,7 @@ public class Diagram extends Graph {
 
 
     public Collection<Vertex> allVertices(java.lang.Class cls) {
-        Vector<Vertex> all = new Vector<Vertex>();
+        Collection<Vertex> all = new ArrayList<>();
         for (Vertex vertex : getVertices()) {
             if (vertex.getClass() == cls) {
                 all.add(vertex);
@@ -58,6 +71,12 @@ public class Diagram extends Graph {
             }
         }
         return inheritance;
+    }
+
+
+    private static boolean isStateDiagramVertex(Vertex vertex) {
+        java.lang.Class cls = vertex.getClass();
+        return cls == State.class || cls == ActionState.class || cls == InitialState.class || cls == FinalState.class;
     }
 
 }

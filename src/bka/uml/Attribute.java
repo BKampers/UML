@@ -13,7 +13,8 @@ public class Attribute implements Member {
     public Attribute() {
     }
 
-    
+
+    @Override
     public String getName() {
         return name;
     }
@@ -23,7 +24,8 @@ public class Attribute implements Member {
         this.name = name;
     }
 
-    
+
+    @Override
     public Type getType() {
         return type;
     }
@@ -33,7 +35,8 @@ public class Attribute implements Member {
         this.type = type;
     }
     
-    
+
+    @Override
     public Type getOwner() {
         return owner;
     }
@@ -44,17 +47,19 @@ public class Attribute implements Member {
         this.owner = owner;
     }
     
-    
-    public char getVisibility() {
+
+    @Override
+    public Visibility getVisibility() {
         return visibility;
     }
     
     
-    public void setVisibility(char visibility) {
+    public void setVisibility(Visibility visibility) {
         this.visibility = visibility;
     }
     
-    
+
+    @Override
     public boolean isClassScoped() {
         return classScoped;
     }
@@ -79,7 +84,8 @@ public class Attribute implements Member {
         return name + " : " + type;
     }
     
-    
+
+    @Override
     public String toString() {
         return owner + "." + nameTypeString();
     }
@@ -88,7 +94,7 @@ public class Attribute implements Member {
     private String name;
     private Type type;
     private Type owner;
-    private char visibility;
+    private Visibility visibility;
     private boolean classScoped;
     private Typed initialValue;
     
