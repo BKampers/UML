@@ -4,29 +4,30 @@
 
 package bka.uml;
 
+import bka.ocl.*;
 import java.util.*;
 
 
-public class Class extends bka.graph.Vertex implements Type {
-    
-    
+public class Class extends bka.graph.Vertex implements Type, Named {
+
+   
     public void setAttributes(Collection<Attribute> attributes) {
-        this.attributes = attributes;
+        this.attributes = (attributes != null) ? new ArrayList<>(attributes) : null;
     }
     
     
     public Collection<Attribute> getAttributes() {
-        return attributes;
-    }
-    
-    
-    public Collection<Operation> getOperations() {
-        return operations;
+        return (attributes != null) ? new ArrayList<>(attributes) : null;
     }
     
     
     public void setOperations(List<Operation> operations) {
-        this.operations = operations;
+        this.operations = (operations != null) ? new ArrayList<>(operations) : null;
+    }
+
+
+    public Collection<Operation> getOperations() {
+        return (operations != null) ? new ArrayList<>(operations) : null;
     }
     
     
@@ -40,8 +41,9 @@ public class Class extends bka.graph.Vertex implements Type {
     }
     
     
-    private Collection<Attribute> attributes = new Vector<Attribute>();
-    private Collection<Operation> operations = new Vector<Operation>();
+    private Collection<Attribute> attributes;
+    private Collection<Operation> operations;
 
-    private boolean abstractClass = false;
+    private boolean abstractClass;
+
 }

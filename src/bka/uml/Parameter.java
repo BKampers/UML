@@ -10,26 +10,33 @@ import bka.ocl.Typed;
 public class Parameter implements Typed {
 
     
-    public static final int UNDEFINED = 0; 
-    public static final int IN        = 1;
-    public static final int OUT       = 2; 
-    public static final int INOUT     = 3;
+    public enum Direction { 
+
+        IN, OUT, INOUT;
+        
+        @Override 
+        public String toString() {
+            return '[' + super.toString() + ']';
+        }
+
+    }
 
         
     public Parameter() {
     }
     
     
-    public int getDirection() {
+    public Direction getDirection() {
         return direction;
     }
     
     
-    public void setDirection(int direction) {
+    public void setDirection(Direction direction) {
         this.direction = direction;
     }
 
     
+    @Override
     public String getName() {
         return name;
     }
@@ -40,6 +47,7 @@ public class Parameter implements Typed {
     }
 
     
+    @Override
     public Type getType() {
         return type;
     }
@@ -50,50 +58,43 @@ public class Parameter implements Typed {
     }
     
     
-    public Typed getDefaultValue() {
+    public Expression getDefaultValue() {
         return defaultValue;
     }
     
     
-    public void setDefaultValue(Typed value) {
+    public void setDefaultValue(Expression value) {
         defaultValue = value;
     }
     
     
-    public static String directionString(int direction) {
-        switch (direction) {
-            case Parameter.IN    : return "[IN]";
-            case Parameter.OUT   : return "[OUT]";
-            case Parameter.INOUT : return "[IN/OUT]";
-            default              : return "";
-        }
-    }
-    
-    
     public String directionString() {
-        return directionString(direction);
+        return direction.toString();
     }
     
-    
+
+    @Override
     public String toString() {
-        String string = directionString();
-        if (string.length() > 0) {
-            string += " ";
+        StringBuilder builder = new StringBuilder();
+        if (direction != null) {
+            builder.append(direction);
+            builder.append(' ');
         }
         if (name != null) {
-            string += name;
+            builder.append(name);
         }
         if (getType() != null) {
-            string += " : " + getType();
+            builder.append(" : ");
+            builder.append(getType());
         }
-        return string;
+        return builder.toString();
     }
     
     
-    private int direction = UNDEFINED;
+    private Direction direction;
     private String name;
     private Type type;
     
-    private Typed defaultValue = null;
+    private Expression defaultValue = null;
     
 }
