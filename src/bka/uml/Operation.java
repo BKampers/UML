@@ -69,12 +69,12 @@ public class Operation implements Member {
     
     
     public List<Parameter> getParameters() {
-        return (parameters != null) ? new ArrayList(parameters) : null;
+        return (parameters != null) ? new ArrayList<>(parameters) : null;
     }
     
     
     public void setParameters (List<Parameter> parameters) {
-        this.parameters = (parameters != null) ? new ArrayList(parameters) : null;
+        this.parameters = (parameters != null) ? new ArrayList<>(parameters) : null;
     }
     
 

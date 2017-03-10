@@ -43,7 +43,6 @@ public class Attribute implements Member {
     
     
     public void setOwner(Type owner) {
-        assert owner instanceof bka.uml.Class;
         this.owner = owner;
     }
     

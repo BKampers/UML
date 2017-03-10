@@ -27,7 +27,7 @@ public class Object extends bka.graph.Vertex implements bka.ocl.Typed {
     
     public Map<Attribute, Expression> getAttributeValues() {
         if (attributeValues != null) {
-            return new HashMap(attributeValues);
+            return new HashMap<>(attributeValues);
         }
         else {
             return null;
@@ -37,7 +37,7 @@ public class Object extends bka.graph.Vertex implements bka.ocl.Typed {
     
     public void setAttributeValues(Map<Attribute, Expression> values) {
         if (values != null) {
-            attributeValues = new HashMap(values);
+            attributeValues = new HashMap<>(values);
         }
         else {
             attributeValues = null;
