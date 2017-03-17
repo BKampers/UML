@@ -26,7 +26,7 @@ public class Class extends bka.graph.Vertex implements Type, Named {
     }
 
 
-    public Collection<Operation> getOperations() {
+    public List<Operation> getOperations() {
         return (operations != null) ? new ArrayList<>(operations) : null;
     }
     
