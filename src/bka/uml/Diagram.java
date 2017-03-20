@@ -28,7 +28,11 @@ public class Diagram extends Graph {
         for (Vertex vertex : getVertices()) {
             if (isStateDiagramVertex(vertex) && findContainer(vertex) == container) {
                 vertices.add(vertex);
-                edges.addAll(allDirectedEdgesFrom(vertex));
+                for (Edge edge : allDirectedEdgesFrom(vertex)) {
+                    if (edge.getClass() == Transition.class) {
+                        edges.add(edge);
+                    }
+                }
             }
         }
         return new Diagram(vertices, edges);
