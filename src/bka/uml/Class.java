@@ -11,12 +11,12 @@ import java.util.*;
 public class Class extends bka.graph.Vertex implements Type, Named {
 
    
-    public void setAttributes(Collection<Attribute> attributes) {
+    public void setAttributes(List<Attribute> attributes) {
         this.attributes = (attributes != null) ? new ArrayList<>(attributes) : null;
     }
     
     
-    public Collection<Attribute> getAttributes() {
+    public List<Attribute> getAttributes() {
         return (attributes != null) ? new ArrayList<>(attributes) : null;
     }
     
@@ -41,8 +41,8 @@ public class Class extends bka.graph.Vertex implements Type, Named {
     }
     
     
-    private Collection<Attribute> attributes;
-    private Collection<Operation> operations;
+    private List<Attribute> attributes;
+    private List<Operation> operations;
 
     private boolean abstractClass;
 

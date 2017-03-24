@@ -15,16 +15,16 @@ public class Interface extends bka.graph.Vertex implements Type {
     
     
     public List<Operation> getOperations() {
-        return operations;
+        return (operations != null) ? new ArrayList<>(operations) : null;
     }
     
     
     public void setOperations(List<Operation> operations) {
-        this.operations = operations;
+        this.operations = (operations != null) ? new ArrayList<>(operations) : null;
     }
     
     
-    private List<Operation> operations = new ArrayList<Operation>();
+    private List<Operation> operations;
     
     
 }
