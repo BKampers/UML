@@ -1,9 +1,9 @@
+/*
+** Copyright © Bart Kampers
+*/
+
 package bka.uml;
 
-public class ActionState extends State {
-    
-  
-//    public ActionState() {
-//    }
+public class ActionState<A> extends State<A> {
     
 }

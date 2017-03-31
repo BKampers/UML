@@ -1,35 +1,39 @@
+/*
+** Copyright © Bart Kampers
+*/
+
 package bka.uml;
 
 import bka.graph.*;
 
-public class Transition extends Edge {
+public class Transition<E, A> extends Edge {
     
     public Transition() {
         setDirected(true);
     }
     
     
-    public Event getEvent() {
+    public E getEvent() {
         return event;
     }
     
     
-    public void setEvent(Event event) {
+    public void setEvent(E event) {
         this.event = event;
     }
     
     
-    public Action getAction() {
+    public A getAction() {
         return action;
     }
 
     
-    public void setAction(Action action) {
+    public void setAction(A action) {
         this.action = action;
     }
     
     
-    private Event event = null;
-    private Action action = null;
+    private E event;
+    private A action;
     
 }

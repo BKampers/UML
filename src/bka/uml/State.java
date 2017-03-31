@@ -1,40 +1,44 @@
+/*
+** Copyright © Bart Kampers
+*/
+
 package bka.uml;
 
-public class State extends bka.graph.Vertex {
+public class State<A> extends bka.graph.Vertex {
 
     
-    public Action getEntryAction() {
+    public A getEntryAction() {
         return entryAction;
     }
     
     
-    public void setEntryAction(Action action) {
+    public void setEntryAction(A action) {
         entryAction = action;
     }
     
     
-    public Action getExitAction() {
+    public A getExitAction() {
         return exitAction;
     }
     
     
-    public void setExitAction(Action action) {
+    public void setExitAction(A action) {
         exitAction = action;
     }
     
     
-    public Activity getActivity() {
+    public A getActivity() {
         return activity;
     }
     
     
-    public void setActivity(Activity activity) {
+    public void setActivity(A activity) {
         this.activity = activity;
     }
     
     
-    private Action entryAction;
-    private Activity activity;
-    private Action exitAction;
+    private A entryAction;
+    private A activity;
+    private A exitAction;
      
 }
