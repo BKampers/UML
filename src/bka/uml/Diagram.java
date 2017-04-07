@@ -61,20 +61,19 @@ public class Diagram extends Graph {
     }
 
 
-    public boolean inheritance(bka.uml.Class descendantClass, bka.uml.Class ancestorClass) {
-        boolean inheritance = false;
-        if (descendantClass != null && ancestorClass != null) {
-            if (descendantClass == ancestorClass) {
-                inheritance = true;
-            }
-            else {
-                Collection<Edge> generalizations = allEdges(bka.uml.Generalization.class);
-                Graph classDiagram = new Graph(generalizations);
-                java.util.List<Vertex> walk = classDiagram.directedWalk(descendantClass, ancestorClass);
-                inheritance = ! walk.isEmpty();
-            }
+    public boolean inheritance(Vertex descendantType, Vertex ancestorType) {
+        if (! (descendantType instanceof Type) || ! (ancestorType instanceof Type)) {
+            throw new IllegalArgumentException();
         }
-        return inheritance;
+        if (descendantType == ancestorType) {
+            return true;
+        }
+        else {
+            Graph classDiagram = new Graph(allEdges(bka.uml.Generalization.class));
+            classDiagram.addEdges(allEdges(bka.uml.Realization.class));
+            java.util.List<Vertex> walk = classDiagram.directedWalk(descendantType, ancestorType);
+            return ! walk.isEmpty();
+        }
     }
 
 

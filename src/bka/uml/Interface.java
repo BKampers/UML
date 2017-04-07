@@ -7,7 +7,7 @@ package bka.uml;
 import java.util.*;
 
 
-public class Interface extends bka.graph.Vertex implements Type {
+public class Interface extends bka.graph.Vertex implements Type, bka.ocl.Named {
 
     
     public Interface() {    
