@@ -22,6 +22,25 @@ public class Diagram extends Graph {
     }
 
 
+    public Diagram getTypeHierarchy(Vertex type) {
+        if (! isTypeVertex(type)) {
+            throw new IllegalArgumentException("Not a type " + type);
+        }
+        Collection<Vertex> vertices = new ArrayList<>();
+        Collection<Edge> edges = new ArrayList<>();
+        vertices.add(type);
+        for (Edge edge : allDirectedEdgesFrom(type)) {
+            if (isInheritanceEdge(edge)) {
+                edges.add(edge);
+                Diagram parentDiagram = getTypeHierarchy(edge.getTerminus());
+                vertices.addAll(parentDiagram.getVertices());
+                edges.addAll(parentDiagram.getEdges());
+            }
+        }
+        return new Diagram(vertices, edges);
+    }
+
+
     public Diagram getStateDiagram(Vertex container) {
         Collection<Vertex> vertices = new ArrayList<>();
         Collection<Edge> edges = new ArrayList<>();
@@ -74,6 +93,19 @@ public class Diagram extends Graph {
             java.util.List<Vertex> walk = classDiagram.directedWalk(descendantType, ancestorType);
             return ! walk.isEmpty();
         }
+    }
+    
+    
+    private static boolean isInheritanceEdge(Edge edge) {
+        java.lang.Class cls = edge.getClass();
+        return cls == Generalization.class || cls == Realization.class;
+        
+    }
+
+
+    private static boolean isTypeVertex(Vertex vertex) {
+        java.lang.Class cls = vertex.getClass();
+        return cls == bka.uml.Class.class || cls == bka.uml.Interface.class;
     }
 
 
