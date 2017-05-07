@@ -85,7 +85,7 @@ public class Parameter implements Typed {
         }
         if (getType() != null) {
             builder.append(" : ");
-            builder.append(getType());
+            builder.append(getType().getName());
         }
         return builder.toString();
     }

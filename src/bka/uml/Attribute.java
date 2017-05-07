@@ -80,7 +80,15 @@ public class Attribute implements Member {
     
     
     public String nameTypeString() {
-        return name + " : " + type;
+        StringBuilder builder = new StringBuilder();
+        if (name != null) {
+            builder.append(name);
+        }
+        builder.append(": ");
+        if (type != null) {
+            builder.append(type.getName());
+        }
+        return builder.toString();
     }
     
 

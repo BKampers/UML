@@ -21,7 +21,7 @@ public class Object extends bka.graph.Vertex implements bka.ocl.Typed {
 
     
     public void setType(Type type) {
-        this.type = (bka.uml.Class) type;
+        this.type = type;
     }
 
     
@@ -61,6 +61,6 @@ public class Object extends bka.graph.Vertex implements bka.ocl.Typed {
     }
 
     
-    private bka.uml.Class type;
+    private bka.uml.Type type;
     private Map<Attribute, Expression> attributeValues;
 }

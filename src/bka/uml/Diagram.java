@@ -24,7 +24,7 @@ public class Diagram extends Graph {
 
     public Diagram getTypeHierarchy(Vertex type) {
         if (! isTypeVertex(type)) {
-            throw new IllegalArgumentException("Not a type " + type);
+            throw new IllegalArgumentException("Not a type: " + type);
         }
         Collection<Vertex> vertices = new ArrayList<>();
         Collection<Edge> edges = new ArrayList<>();
@@ -80,6 +80,34 @@ public class Diagram extends Graph {
     }
 
 
+    public Collection<Vertex> allClassVertices() {
+        Collection<Vertex> collection = new ArrayList<>();
+        for (Vertex vertex : getVertices()) {
+            if (bka.uml.Class.class.isAssignableFrom(vertex.getClass())) {
+                collection.add(vertex);
+            }
+        }
+        return collection;
+    }
+
+
+    public Collection<Vertex> allTypeVertices() {
+        Collection<Vertex> collection = new ArrayList<>();
+        for (Vertex vertex : getVertices()) {
+            if (vertex instanceof bka.uml.Type) {
+                collection.add(vertex);
+            }
+        }
+        return collection;
+    }
+
+
+    /**
+     *
+     * @param descendantType
+     * @param ancestorType
+     * @return true if the first argument is a descendant of the second
+     */
     public boolean inheritance(Vertex descendantType, Vertex ancestorType) {
         if (! (descendantType instanceof Type) || ! (ancestorType instanceof Type)) {
             throw new IllegalArgumentException();
