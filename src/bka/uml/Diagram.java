@@ -133,7 +133,7 @@ public class Diagram extends Graph {
 
     private static boolean isTypeVertex(Vertex vertex) {
         java.lang.Class cls = vertex.getClass();
-        return cls == bka.uml.Class.class || cls == bka.uml.Interface.class;
+        return bka.uml.Type.class.isAssignableFrom(cls);
     }
 
 
