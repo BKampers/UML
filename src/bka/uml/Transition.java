@@ -6,7 +6,7 @@ package bka.uml;
 
 import bka.graph.*;
 
-public class Transition<E, A> extends Edge {
+public class Transition<E, G, A> extends Edge {
     
     public Transition() {
         setDirected(true);
@@ -18,22 +18,33 @@ public class Transition<E, A> extends Edge {
     }
     
     
-    public void setEvent(E event) {
-        this.event = event;
+    public void setAction(A action) {
+        this.action = action;
+    }
+
+
+    public G getGuardCondition() {
+        return guardCondition;
+    }
+
+
+    public void setGuardCondition(G guardCondition) {
+        this.guardCondition = guardCondition;
     }
     
     
+    public void setEvent(E event) {
+        this.event = event;
+    }
+
+
     public A getAction() {
         return action;
     }
 
-    
-    public void setAction(A action) {
-        this.action = action;
-    }
-    
-    
+
     private E event;
+    private G guardCondition;
     private A action;
     
 }

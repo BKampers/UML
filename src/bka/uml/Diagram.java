@@ -139,7 +139,7 @@ public class Diagram extends Graph {
 
     private static boolean isStateDiagramVertex(Vertex vertex) {
         java.lang.Class cls = vertex.getClass();
-        return cls == State.class || cls == ActionState.class || cls == InitialState.class || cls == FinalState.class;
+        return cls == State.class || cls == ActionState.class || cls == Decision.class || cls == InitialState.class || cls == FinalState.class;
     }
 
 }
