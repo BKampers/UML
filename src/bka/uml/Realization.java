@@ -7,10 +7,6 @@ package bka.uml;
 
 
 
-public class Realization extends bka.graph.Edge {
+public class Realization extends bka.graph.DirectedEdge {
     
-    public Realization() {
-        setDirected(true);
-    }
-
 }

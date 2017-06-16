@@ -5,10 +5,6 @@
 package bka.uml;
 
 
-public class Dependency extends bka.graph.Edge {
-
-    public Dependency() {
-        setDirected(true);
-    }
+public class Dependency extends bka.graph.DirectedEdge {
     
 }

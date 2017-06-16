@@ -16,7 +16,6 @@ public class Association extends Dependency {
     
     
     public Association() {
-        setDirected(false);
     }
     
     
@@ -29,7 +28,19 @@ public class Association extends Dependency {
         this.kind = kind;
     }
 
+
+    @Override
+    public boolean isDirected() {
+        return directed;
+    }
+
+
+    public void setDirected(boolean directed) {
+        this.directed = directed;
+    }
+
     
     private Kind kind = Kind.PLAIN;
+    private boolean directed;
 
 }
