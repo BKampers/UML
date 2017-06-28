@@ -9,27 +9,27 @@ import bka.graph.*;
 import java.util.*;
 
 
-public class Diagram extends Graph {
+public class Diagram<V extends Vertex, E extends Edge<V>> extends Graph<V, E> {
 
 
-    public Diagram(Collection<Vertex> vertices, Collection<Edge> edges) {
+    public Diagram(Collection<V> vertices, Collection<E> edges) {
         super(vertices, edges);
     }
 
 
-    public Diagram(Graph graph) {
+    public Diagram(Graph<V, E> graph) {
         super(graph.getVertices(), graph.getEdges());
     }
 
 
-    public Diagram getTypeHierarchy(Vertex type) {
+    public Diagram getTypeHierarchy(V type) {
         if (! isTypeVertex(type)) {
             throw new IllegalArgumentException("Not a type: " + type);
         }
-        Collection<Vertex> vertices = new ArrayList<>();
-        Collection<Edge> edges = new ArrayList<>();
+        Collection<V> vertices = new ArrayList<>();
+        Collection<E> edges = new ArrayList<>();
         vertices.add(type);
-        for (Edge edge : allDirectedEdgesFrom(type)) {
+        for (E edge : allDirectedEdgesFrom(type)) {
             if (isInheritanceEdge(edge)) {
                 edges.add(edge);
                 Diagram parentDiagram = getTypeHierarchy(edge.getTerminus());
@@ -41,15 +41,15 @@ public class Diagram extends Graph {
     }
 
 
-    public Diagram getStateDiagram(Vertex container) {
-        Collection<Vertex> vertices = new ArrayList<>();
-        Collection<Edge> edges = new ArrayList<>();
-        for (Vertex vertex : getVertices()) {
+    public <EE, GG, AA> Diagram<State<AA>, Transition<EE, GG, AA>> getStateDiagram(V container) {
+        Collection<State<AA>> vertices = new ArrayList<>();
+        Collection<Transition<EE, GG, AA>> edges = new ArrayList<>();
+        for (V vertex : getVertices()) {
             if (isStateDiagramVertex(vertex) && findContainer(vertex) == container) {
-                vertices.add(vertex);
-                for (Edge edge : allDirectedEdgesFrom(vertex)) {
+                vertices.add((State<AA>) vertex);
+                for (E edge : allDirectedEdgesFrom(vertex)) {
                     if (edge.getClass() == Transition.class) {
-                        edges.add(edge);
+                        edges.add((Transition<EE, GG, AA>) edge);
                     }
                 }
             }
@@ -58,9 +58,9 @@ public class Diagram extends Graph {
     }
 
 
-    public Collection<Edge> allEdges(java.lang.Class cls) {
-        Collection<Edge> all = new ArrayList<>();
-        for (Edge edge : getEdges()) {
+    public Collection<E> allEdges(java.lang.Class cls) {
+        Collection<E> all = new ArrayList<>();
+        for (E edge : getEdges()) {
             if (edge.getClass() == cls) {
                 all.add(edge);
             }
@@ -69,9 +69,9 @@ public class Diagram extends Graph {
     }
 
 
-    public Collection<Vertex> allVertices(java.lang.Class cls) {
-        Collection<Vertex> all = new ArrayList<>();
-        for (Vertex vertex : getVertices()) {
+    public Collection<V> allVertices(java.lang.Class cls) {
+        Collection<V> all = new ArrayList<>();
+        for (V vertex : getVertices()) {
             if (vertex.getClass() == cls) {
                 all.add(vertex);
             }
@@ -108,7 +108,7 @@ public class Diagram extends Graph {
      * @param ancestorType
      * @return true if the first argument is a descendant of the second
      */
-    public boolean inheritance(Vertex descendantType, Vertex ancestorType) {
+    public boolean inheritance(V descendantType, V ancestorType) {
         if (! (descendantType instanceof Type) || ! (ancestorType instanceof Type)) {
             throw new IllegalArgumentException();
         }
@@ -116,9 +116,9 @@ public class Diagram extends Graph {
             return true;
         }
         else {
-            Graph classDiagram = new Graph(allEdges(bka.uml.Generalization.class));
+            Graph<V, E> classDiagram = new Graph<>(allEdges(bka.uml.Generalization.class));
             classDiagram.addEdges(allEdges(bka.uml.Realization.class));
-            java.util.List<Vertex> walk = classDiagram.directedWalk(descendantType, ancestorType);
+            java.util.List<V> walk = classDiagram.directedWalk(descendantType, ancestorType);
             return ! walk.isEmpty();
         }
     }

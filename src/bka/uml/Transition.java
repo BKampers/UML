@@ -6,7 +6,7 @@ package bka.uml;
 
 import bka.graph.*;
 
-public class Transition<E, G, A> extends DirectedEdge {
+public class Transition<E, G, A> extends DirectedEdge<State<A>> {
     
     
     public E getEvent() {
