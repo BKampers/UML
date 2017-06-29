@@ -41,20 +41,20 @@ public class Diagram<V extends Vertex, E extends Edge<V>> extends Graph<V, E> {
     }
 
 
-    public <EVT, GRD, ACT> Diagram<State<ACT>, Transition<EVT, GRD, ACT>> getStateDiagram(V container) {
-        Collection<State<ACT>> vertices = new ArrayList<>();
-        Collection<Transition<EVT, GRD, ACT>> edges = new ArrayList<>();
+    public Diagram getStateDiagram(V container) {
+        Collection<State> vertices = new ArrayList<>();
+        Collection<Transition> edges = new ArrayList<>();
         for (V vertex : getVertices()) {
             if (isStateDiagramVertex(vertex) && findContainer(vertex) == container) {
-                vertices.add((State<ACT>) vertex);
+                vertices.add((State) vertex);
                 for (E edge : allDirectedEdgesFrom(vertex)) {
                     if (edge.getClass() == Transition.class) {
-                        edges.add((Transition<EVT, GRD, ACT>) edge);
+                        edges.add((Transition) edge);
                     }
                 }
             }
         }
-        return new Diagram(vertices, edges);
+        return new Diagram<>(vertices, edges);
     }
 
 
