@@ -103,12 +103,12 @@ public class DiagramTest {
         vertices.add(ACTION_STATE_2A);
         vertices.add(ACTION_STATE_2B);
         vertices.add(FINAL_STATE);
-        edges.add(new ContainerEdge(METHOD, INITIAL_STATE));
-        edges.add(new ContainerEdge(METHOD, ACTION_STATE_1));
-        edges.add(new ContainerEdge(METHOD, DECISION));
-        edges.add(new ContainerEdge(METHOD, ACTION_STATE_2A));
-        edges.add(new ContainerEdge(METHOD, ACTION_STATE_2B));
-        edges.add(new ContainerEdge(METHOD, FINAL_STATE));
+        edges.add(new DirectedEdge(METHOD, INITIAL_STATE));
+        edges.add(new DirectedEdge(METHOD, ACTION_STATE_1));
+        edges.add(new DirectedEdge(METHOD, DECISION));
+        edges.add(new DirectedEdge(METHOD, ACTION_STATE_2A));
+        edges.add(new DirectedEdge(METHOD, ACTION_STATE_2B));
+        edges.add(new DirectedEdge(METHOD, FINAL_STATE));
         Transition<Event, Guard, Action> initialTransition = new Transition<>();
         initialTransition.setOrigin(INITIAL_STATE);
         initialTransition.setTerminus(ACTION_STATE_1);

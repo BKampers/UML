@@ -45,7 +45,7 @@ public class Diagram<V extends Vertex, E extends Edge<V>> extends Graph<V, E> {
         Collection<State> vertices = new ArrayList<>();
         Collection<Transition> edges = new ArrayList<>();
         for (V vertex : getVertices()) {
-            if (isStateDiagramVertex(vertex) && findContainer(vertex) == container) {
+            if (isStateDiagramVertex(vertex) && findOrigin(vertex, container.getClass()) == container) {
                 vertices.add((State) vertex);
                 for (E edge : allDirectedEdgesFrom(vertex)) {
                     if (edge.getClass() == Transition.class) {
