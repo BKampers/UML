@@ -9,7 +9,13 @@ import java.math.BigInteger;
 import java.util.*;
 
 
+@Deprecated
 public class BasicType implements bka.uml.Type {
+
+    @Override
+    public boolean isAbstract() {
+        return false;
+    }
 
     
     public static class Literal extends IntegerValue {

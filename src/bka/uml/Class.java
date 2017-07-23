@@ -36,6 +36,7 @@ public class Class extends bka.graph.Vertex implements Type, Named {
     }
     
     
+    @Override
     public boolean isAbstract() {
         return abstractClass;
     }

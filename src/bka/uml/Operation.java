@@ -132,7 +132,7 @@ public class Operation implements Member {
         }
         builder.append(parameterString());
         if (type != null) {
-            builder.append(" : ");
+            builder.append(": ");
             builder.append(type.getName());
         }
         return builder.toString();

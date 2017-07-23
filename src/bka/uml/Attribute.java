@@ -78,9 +78,14 @@ public class Attribute implements Member {
         initialValue = value;
     }
     
-    
-    public String nameTypeString() {
+
+    @Override
+    public String toString() {
         StringBuilder builder = new StringBuilder();
+        if (owner != null) {
+            builder.append(owner.toString());
+            builder.append('.');
+        }
         if (name != null) {
             builder.append(name);
         }
@@ -89,12 +94,6 @@ public class Attribute implements Member {
             builder.append(type.getName());
         }
         return builder.toString();
-    }
-    
-
-    @Override
-    public String toString() {
-        return owner + "." + nameTypeString();
     }
 
     

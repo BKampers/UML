@@ -12,7 +12,13 @@ public class Interface extends bka.graph.Vertex implements Type, bka.ocl.Named {
     
     public Interface() {    
     }
-    
+
+
+    @Override
+    public boolean isAbstract() {
+        return true;
+    }
+   
     
     public List<Operation> getOperations() {
         return (operations != null) ? new ArrayList<>(operations) : null;
@@ -25,6 +31,6 @@ public class Interface extends bka.graph.Vertex implements Type, bka.ocl.Named {
     
     
     private List<Operation> operations;
-    
+
     
 }
