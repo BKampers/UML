@@ -22,7 +22,7 @@ public class Diagram<V extends Vertex, E extends Edge<V>> extends Graph<V, E> {
     }
 
 
-    public Diagram getTypeHierarchy(V type) {
+    public Diagram<V, E> getTypeHierarchy(V type) {
         if (! isTypeVertex(type)) {
             throw new IllegalArgumentException("Not a type: " + type);
         }
@@ -32,24 +32,25 @@ public class Diagram<V extends Vertex, E extends Edge<V>> extends Graph<V, E> {
         for (E edge : allDirectedEdgesFrom(type)) {
             if (isInheritanceEdge(edge)) {
                 edges.add(edge);
-                Diagram parentDiagram = getTypeHierarchy(edge.getTerminus());
+                Diagram<V, E> parentDiagram = getTypeHierarchy(edge.getTerminus());
                 vertices.addAll(parentDiagram.getVertices());
                 edges.addAll(parentDiagram.getEdges());
             }
         }
-        return new Diagram(vertices, edges);
+        return new Diagram<>(vertices, edges);
     }
 
 
-    public Diagram getStateDiagram(V container) {
-        Collection<State> vertices = new ArrayList<>();
-        Collection<Transition> edges = new ArrayList<>();
+    @SuppressWarnings("unchecked") // unsafe converting of Vertex to State and of Edge to Transition
+    public <EVENT, GUARD, ACTION> Diagram<State<ACTION>, Transition<EVENT, GUARD, ACTION>> getStateDiagram(V container) {
+        Collection<State<ACTION>> vertices = new ArrayList<>();
+        Collection<Transition<EVENT,GUARD, ACTION>> edges = new ArrayList<>();
         for (V vertex : getVertices()) {
             if (isStateDiagramVertex(vertex) && findOrigin(vertex, container.getClass()) == container) {
-                vertices.add((State) vertex);
+                vertices.add((State<ACTION>) vertex);
                 for (E edge : allDirectedEdgesFrom(vertex)) {
                     if (edge.getClass() == Transition.class) {
-                        edges.add((Transition) edge);
+                        edges.add((Transition<EVENT,GUARD, ACTION>) edge);
                     }
                 }
             }

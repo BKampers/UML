@@ -6,7 +6,10 @@ package bka.uml;
 
 public class State<A> extends bka.graph.Vertex {
 
-    
+
+    public enum Kind { INITIAL, FINAL, ACTION, DECISION }
+
+
     public A getEntryAction() {
         return entryAction;
     }
