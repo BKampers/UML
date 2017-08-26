@@ -4,43 +4,11 @@
 
 package bka.uml;
 
-import bka.graph.*;
 
-public class Transition<E, G, A> extends DirectedEdge<State<A>> {
-    
-    
-    public E getEvent() {
-        return event;
-    }
-    
-    
-    public void setAction(A action) {
-        this.action = action;
-    }
+public interface Transition<E, G, A> {
 
-
-    public G getGuardCondition() {
-        return guardCondition;
-    }
-
-
-    public void setGuardCondition(G guardCondition) {
-        this.guardCondition = guardCondition;
-    }
-    
-    
-    public void setEvent(E event) {
-        this.event = event;
-    }
-
-
-    public A getAction() {
-        return action;
-    }
-
-
-    private E event;
-    private G guardCondition;
-    private A action;
+    public E getEvent();
+    public G getGuardCondition();
+    public A getAction();
     
 }
