@@ -1,4 +1,4 @@
 package bka.uml;
 
-public interface InitialState {
+public interface InitialState extends StateDiagramVertex {
 }

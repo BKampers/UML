@@ -1,4 +1,4 @@
 package bka.uml;
 
-public interface FinalState {
+public interface FinalState extends StateDiagramVertex {
 }
