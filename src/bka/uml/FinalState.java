@@ -1,4 +1,4 @@
 package bka.uml;
 
-public interface FinalState extends StateDiagramVertex {
+public interface FinalState extends TransitionTarget {
 }

@@ -3,8 +3,8 @@ package bka.uml;
 
 public interface Transition<E, G, A> {
 
-    public StateDiagramVertex getSource();
-    public StateDiagramVertex getTarget();
+    public TransitionSource getSource();
+    public TransitionTarget getTarget();
 
     public E getEvent();
     public G getGuardCondition();

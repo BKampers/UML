@@ -1,10 +1,9 @@
-/*
-** Copyright © Bart Kampers
-*/
-
 package bka.uml;
 
 
-public class Dependency extends bka.graph.DirectedEdge {
-    
+public interface Dependency {
+
+    public Thing getDependent();
+    public Thing getIndependent();
+
 }

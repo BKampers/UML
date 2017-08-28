@@ -1,5 +1,8 @@
 package bka.uml;
 
-public class Generalization extends Dependency {
-    
+public interface Generalization {
+
+    public Type getAncestor();
+    public Type getDescendant();
+
 }

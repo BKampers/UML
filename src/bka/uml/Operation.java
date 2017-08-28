@@ -1,7 +1,3 @@
-/*
-** Copyright © Bart Kampers
-*/
-
 package bka.uml;
 
 import java.util.*;

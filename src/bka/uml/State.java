@@ -3,7 +3,7 @@ package bka.uml;
 /**
  * @param <A> action or activity
  */
-public interface State<A> extends StateDiagramVertex<A> {
+public interface State<A> extends TransitionSource<A>, TransitionTarget<A> {
 
     public String getName();
     public A getEntryAction();

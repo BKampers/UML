@@ -1,12 +1,9 @@
-/*
-** Copyright © Bart Kampers
-*/
-
-
 package bka.uml;
 
 
+public interface Realization extends Dependency {
 
-public class Realization extends bka.graph.DirectedEdge {
-    
+    public Type getAncestor();
+    public Type getDescendant();
+
 }

@@ -1,11 +1,7 @@
-/*
-** Copyright © Bart Kampers
-*/
-
 package bka.uml;
 
 
-public class Association extends Dependency {
+public interface Association {
 
     
     public enum Kind {
@@ -13,34 +9,12 @@ public class Association extends Dependency {
         AGGREGATION,
         COMPOSITION
     }
-    
-    
-    public Association() {
-    }
-    
-    
-    public Kind getKind() {
-        return kind;
-    }
-
-    
-    public void setKind(Kind kind) {
-        this.kind = kind;
-    }
 
 
-    @Override
-    public boolean isDirected() {
-        return directed;
-    }
+    public Thing getDependent();
+    public Thing getIndependent();
 
-
-    public void setDirected(boolean directed) {
-        this.directed = directed;
-    }
-
-    
-    private Kind kind = Kind.PLAIN;
-    private boolean directed;
+    public Kind getKind();
+    public boolean isDirected();
 
 }
