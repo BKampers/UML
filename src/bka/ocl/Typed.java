@@ -4,7 +4,7 @@
 
 package bka.ocl;
 
-import bka.uml.Type;
+import uml.structure.Type;
 
 
 public interface Typed extends Named {

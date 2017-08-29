@@ -5,8 +5,9 @@
 package bka.ocl;
 
 
-import bka.uml.Type;
-import bka.uml.*;
+import uml.structure.Parameter;
+import uml.structure.Operation;
+import uml.structure.Type;
 import java.util.*;
 
 

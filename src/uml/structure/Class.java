@@ -1,4 +1,4 @@
-package bka.uml;
+package uml.structure;
 
 import bka.ocl.*;
 import java.util.*;

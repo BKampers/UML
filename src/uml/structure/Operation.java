@@ -1,5 +1,6 @@
-package bka.uml;
+package uml.structure;
 
+import uml.annotation.*;
 import java.util.*;
 
 

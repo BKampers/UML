@@ -5,7 +5,7 @@
 package bka.ocl;
 
 
-import bka.uml.Type;
+import uml.structure.Type;
 import java.util.*;
 
 
@@ -79,24 +79,24 @@ public class Expression {
     
     
     private String name(Typed typed) {
-        if (typed instanceof bka.uml.Class) {
-            return ((bka.uml.Class) typed).getName();
+        if (typed instanceof uml.structure.Class) {
+            return ((uml.structure.Class) typed).getName();
         }
-        else if (typed instanceof bka.uml.Object) {
-            return ((bka.uml.Object) typed).getName();
+        else if (typed instanceof uml.structure.Object) {
+            return ((uml.structure.Object) typed).getName();
         }
-        else if (typed instanceof bka.uml.Attribute) {
-            return ((bka.uml.Attribute) typed).getName();
+        else if (typed instanceof uml.structure.Attribute) {
+            return ((uml.structure.Attribute) typed).getName();
         }
-        else if (typed instanceof bka.uml.Operation) {
-            return ((bka.uml.Operation) typed).getName();
+        else if (typed instanceof uml.structure.Operation) {
+            return ((uml.structure.Operation) typed).getName();
         }
-        else if (typed instanceof bka.uml.Parameter) {
-            return ((bka.uml.Parameter) typed).getName();
+        else if (typed instanceof uml.structure.Parameter) {
+            return ((uml.structure.Parameter) typed).getName();
         }
         else if (typed instanceof bka.ocl.Invocation) {
             String string = new String();
-            bka.uml.Operation operation = ((bka.ocl.Invocation) typed).getOperation();
+            uml.structure.Operation operation = ((bka.ocl.Invocation) typed).getOperation();
             if (operation != null) {
                 string += operation.getName();
             }
@@ -104,10 +104,10 @@ public class Expression {
                 string += "(null)";
             }
             string += "(";
-            Map<bka.uml.Parameter, Expression> parameters = ((bka.ocl.Invocation) typed).getParameters();
+            Map<uml.structure.Parameter, Expression> parameters = ((bka.ocl.Invocation) typed).getParameters();
             if (parameters != null) {
                 boolean first = true;
-                for (Map.Entry<bka.uml.Parameter, Expression> entry : ((bka.ocl.Invocation) typed).getParameters().entrySet()) {
+                for (Map.Entry<uml.structure.Parameter, Expression> entry : ((bka.ocl.Invocation) typed).getParameters().entrySet()) {
                     if (! first) {
                         string += ", ";
                     }

@@ -1,4 +1,5 @@
-package bka.uml;
+package uml.statechart;
+
 
 /**
  * @param <A> action or activity

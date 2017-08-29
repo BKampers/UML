@@ -1,4 +1,4 @@
-package bka.uml;
+package uml.statechart;
 
 /**
  * @param <E> expression

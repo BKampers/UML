@@ -10,7 +10,7 @@ import java.util.*;
 
 
 @Deprecated
-public class BasicType implements bka.uml.Type {
+public class BasicType implements uml.structure.Type {
 
     @Override
     public boolean isAbstract() {
@@ -43,7 +43,7 @@ public class BasicType implements bka.uml.Type {
             return string;
         }
         
-        public bka.uml.Type getType() {
+        public uml.structure.Type getType() {
             return type;
         }
         
@@ -150,7 +150,7 @@ public class BasicType implements bka.uml.Type {
             return INTEGER.getName();
         }
         
-        public bka.uml.Type getType() {
+        public uml.structure.Type getType() {
             return INTEGER;
         }
         

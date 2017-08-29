@@ -1,5 +1,4 @@
-package bka.uml;
-
+package uml.structure;
 
 public interface Expression {
 }

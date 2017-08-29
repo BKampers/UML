@@ -1,4 +1,4 @@
-package bka.uml;
+package uml.structure;
 
 
 public interface Parameter extends bka.ocl.Typed {

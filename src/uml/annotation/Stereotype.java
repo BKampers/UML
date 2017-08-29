@@ -1,4 +1,4 @@
-package bka.uml;
+package uml.annotation;
 
 
 public interface Stereotype {

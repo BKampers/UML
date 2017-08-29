@@ -1,4 +1,4 @@
-package bka.uml;
+package uml.structure;
 
 
 public interface Association {
@@ -11,8 +11,8 @@ public interface Association {
     }
 
 
-    public Thing getDependent();
-    public Thing getIndependent();
+    public Structural getDependent();
+    public Structural getIndependent();
 
     public Kind getKind();
     public boolean isDirected();
