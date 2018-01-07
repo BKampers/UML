@@ -1,7 +1,7 @@
 package uml.structure;
 
 
-public interface Parameter extends uml.structure.Typed {
+public interface Parameter extends Typed {
 
     
     public enum Direction { 

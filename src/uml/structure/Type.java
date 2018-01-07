@@ -1,7 +1,7 @@
 package uml.structure;
 
 
-public interface Type extends Structural, uml.structure.Named {
+public interface Type extends Structural, Named {
     
     public boolean isAbstract();
     
