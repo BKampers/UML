@@ -1,7 +1,7 @@
 package uml.structure;
 
 
-public interface Parameter extends bka.ocl.Typed {
+public interface Parameter extends uml.structure.Typed {
 
     
     public enum Direction { 

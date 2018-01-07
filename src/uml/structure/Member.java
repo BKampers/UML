@@ -1,7 +1,5 @@
 package uml.structure;
 
-import bka.ocl.Typed;
-
 
 public interface Member extends Typed {
 

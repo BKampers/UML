@@ -2,7 +2,7 @@
 ** Copyright © Bart Kampers
 */
 
-package bka.ocl;
+package uml.structure;
 
 
 public interface Named {
