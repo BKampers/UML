@@ -12,6 +12,11 @@ import uml.structure.*;
 public class Util {
     
     
+    public static String display(Stereotype stereotype) {
+        return '«' + stereotype.getName() + '»';
+    }
+    
+    
     public static boolean isConstructor(Operation operation) {
         return hasStereotype(operation, Stereotype.CONSTRUCTOR);
     }
