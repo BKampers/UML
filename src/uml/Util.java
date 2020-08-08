@@ -24,14 +24,7 @@ public class Util {
     
     private static boolean hasStereotype(Stereotyped stereotyped, String name) {
         Set<Stereotype> stereotypes = stereotyped.getStereotypes();
-        if (stereotypes != null) {
-            for (Stereotype stereotype : stereotypes) {
-                if (name.equals(stereotype.getName())) {
-                    return true;
-                }
-            }
-        }
-        return false;
+        return stereotypes != null && stereotypes.stream().anyMatch(s -> name.equals(s.getName()));
     }
-    
+
 }
