@@ -25,6 +25,8 @@ public class UtilTest {
     @Test
     public void testIsConstructor() {
         Operation operation = Mockito.mock(Operation.class);
+        Mockito.when(operation.getStereotypes()).thenReturn(null);
+        assertFalse(Util.isConstructor(operation));
         Mockito.when(operation.getStereotypes()).thenReturn(Collections.emptySet());
         assertFalse(Util.isConstructor(operation));
         Mockito.when(operation.getStereotypes()).thenReturn(new HashSet<>(Arrays.asList(() -> "any")));
